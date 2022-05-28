@@ -1,6 +1,7 @@
-import Link from "next/link"
-
-import PosterList from "../components/PosterList"
+import About from './about'
+import styles from './about.module.css'
+import Layout from '../../components/layout/layout'
+import {useRouter} from 'next/router'
 
 const filmPosters = [
     {
@@ -12,7 +13,7 @@ const filmPosters = [
         price: "25$",
         extended: "James Bond has left active service. His peace is short-lived when Felix Leiter, an old friend from the CIA, turns up asking for help, leading Bond onto the trail of a mysterious villain armed with dangerous new technology",
         director: "Cary Joji Fukunaga",
-        stars: "Daniel Craig, Ana de Armas, Rami Malek"
+        stars: ["Daniel Craig", "Ana de Armas", "Rami Malek"]
     },
     {
         id: 2,
@@ -23,7 +24,7 @@ const filmPosters = [
         price: "15$",
         extended: "In the early years of the 20th century, the Kingsman agency is formed to stand against a cabal plotting a war to wipe out millions",
         director: "Matthew Vaughn",
-        stars: "Ralph Fiennes, Gemma Arterton, Rhys Ifans"
+        stars: ["Ralph Fiennes", "Gemma Arterton", "Rhys Ifans"]
     },
     {
         id:3,
@@ -34,17 +35,27 @@ const filmPosters = [
         price: "20$",
         extended: "After more than thirty years of service as one of the Navy's top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him",
         director: "Joseph Kosinski",
-        stars: "Tom Cruise, Jennifer Connelly, Miles Teller"
+        start: ["Tom Cruise", "Jennifer Connelly", "Miles Teller"]
     }
 ]
 
-function HomePage(){
-    return (
-        <>
-            <PosterList filmPosters={filmPosters} />
-            <Link href="./createNewFilm">Create a new film</Link>
-        </>
+function InspectFilm(props){
+    const router = useRouter()
+    const route = router.query.index
+    let film = {}
+    for(let filmPoster of filmPosters){
+        if(filmPoster.id===router){
+            film=filmPoster
+        }
+    }
+    console.log(film)
+    return(
+        <Layout>
+            <div className={styles.container}>
+                {film}
+            </div>  
+        </Layout>
     )
 }
 
-export default HomePage
+export default InspectFilm

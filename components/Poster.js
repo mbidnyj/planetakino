@@ -19,8 +19,8 @@ function Poster(props){
             <h2>{props.price}</h2>
             {/* <button className={styles.btn} onClick={buyHanler}>Buy ticket</button>
             <button className={styles.btn} onClick={inspectHandler}>Inspect additional information</button> */}
-            <Link href='../buyTicket'><a className={styles.link}>Buy ticket</a></Link>
-            <Link href='../inspectFilm'><a className={styles.link}>Inspect additional information</a></Link>
+            <Link href={'../buyTicket/'+props.id}><a className={styles.link}>Buy ticket</a></Link>
+            <Link href={'../inspectFilm/'+props.id}><a className={styles.link}>Inspect additional information</a></Link>
         </div>
     )
 }
