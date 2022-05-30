@@ -2,22 +2,22 @@ import Link from 'next/link'
 
 import classes from './MainNavigation.module.css'
 
-function Footer(){
+function MainNavigation(){
     return(
-        <div className={classes.header}>
+        <header className={classes.header}>
             <div className={classes.logo}>PLANETAKINO</div>
             <nav>
                 <ul>
                     <li>
-                        <Link href='/testPage'>Contacts</Link>
+                        <Link href="/">All films</Link>
                     </li>
                     <li>
-                        <Link href='/testPage'>Some useful information</Link>
+                        <Link href="/createNewFilm">Create new film</Link>
                     </li>
                 </ul>
             </nav>
-        </div>
+        </header>
     )
 }
 
-export default Footer
+export default MainNavigation

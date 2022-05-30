@@ -1,4 +1,4 @@
-import NewFilmForm from '../components/NewFilmForm/NewFilmForm'
+import NewFilmForm from '../../components/NewFilmForm/NewFilmForm'
 
 function CreateNewFilm(){
     return(

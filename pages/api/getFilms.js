@@ -1,7 +1,3 @@
-import About from './about'
-import styles from './about.module.css'
-import Layout from '../../components/layout/layout'
-import {useRouter} from 'next/router'
 
 const filmPosters = [
     {
@@ -13,7 +9,7 @@ const filmPosters = [
         price: "25$",
         extended: "James Bond has left active service. His peace is short-lived when Felix Leiter, an old friend from the CIA, turns up asking for help, leading Bond onto the trail of a mysterious villain armed with dangerous new technology",
         director: "Cary Joji Fukunaga",
-        stars: ["Daniel Craig", "Ana de Armas", "Rami Malek"]
+        stars: "Daniel Craig, Ana de Armas, Rami Malek"
     },
     {
         id: 2,
@@ -24,7 +20,7 @@ const filmPosters = [
         price: "15$",
         extended: "In the early years of the 20th century, the Kingsman agency is formed to stand against a cabal plotting a war to wipe out millions",
         director: "Matthew Vaughn",
-        stars: ["Ralph Fiennes", "Gemma Arterton", "Rhys Ifans"]
+        stars: "Ralph Fiennes, Gemma Arterton, Rhys Ifans"
     },
     {
         id:3,
@@ -35,27 +31,30 @@ const filmPosters = [
         price: "20$",
         extended: "After more than thirty years of service as one of the Navy's top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him",
         director: "Joseph Kosinski",
-        start: ["Tom Cruise", "Jennifer Connelly", "Miles Teller"]
+        stars: "Tom Cruise, Jennifer Connelly, Miles Teller"
     }
 ]
 
-function InspectFilm(props){
-    const router = useRouter()
-    const route = router.query.index
-    let film = {}
-    for(let filmPoster of filmPosters){
-        if(filmPoster.id===router){
-            film=filmPoster
-        }
+function Handler(req, res){
+
+    if(req.method === "POST"){
+        res.status(200).json(filmPosters)
+        console.log("fired")
     }
-    console.log(film)
-    return(
-        <Layout>
-            <div className={styles.container}>
-                {film}
-            </div>  
-        </Layout>
-    )
+
+    if(req.query.id==1){
+        res.status(200).json(filmPosters[0])
+        console.log("fired id 1")
+    }
+    if(req.query.id==2){
+        res.status(200).json(filmPosters[1])
+        console.log("fired id 2")
+    }
+    if(req.query.id==3){
+        res.status(200).json(filmPosters[2])
+        console.log("fired id 3")
+    }
+    
 }
 
-export default InspectFilm
+export default Handler

@@ -6,14 +6,11 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    background-color: rgb(230, 230, 230);
 }
 
 .image{
     width: 200px;
-}
-
-.btn{
-    height: 30px;
 }
 
 .link{
