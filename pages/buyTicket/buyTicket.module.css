@@ -1,16 +1,14 @@
-.poster{
-    margin: 15px;
-    padding: 15px;
-    border: 5px solid black;
-    width: 500px;
+.container{
+    background-color: rgb(195, 195, 195);
     text-align: center;
+    border: 5px solid black;
+    width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgb(230, 230, 230);
-}
-
-.image{
-    width: 200px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    padding: 15px;
 }
 
 .link{
