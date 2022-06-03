@@ -1,34 +1,45 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
+
+import Line from "../components/CinemaModel/Line"
+import classes from './testPage.module.css'
+
 
 function testPage(){
-    const [isLoaded, setIsLoaded] = useState(true)
-    const [loadedPage, setLoadedPage] = useState()
+    const [Cinema, setCinema] = useState([
+        [1,1,1,1,1],
+        [0,0,0,0,0],
+        [1,1,1,1,1],
+        [0,0,0,0,0],
+        [1,1,1,1,1]
+    ])
 
-    const url = "http://localhost:3000/api/getExactFilm?id=1"
-    useEffect(()=>{
-        fetch(url).then(response=>{
-            return response.json()
-        }).then(data=>{
-            setIsLoaded(false)
-            setLoadedPage(data)
-        })
-        
-    }, [])
 
-    console.log(loadedPage)
-
-    if(isLoaded){
-        return(
-            <h1>loading...</h1>
-        )
-    }else{
-        return(
-            <div>
-                <h1>{loadedPage.title}</h1>
-                <img src={loadedPage.image} width="200px"alt="image"/>
-            </div>
-        )
+    function handlePlaceClick(event){
+        const innerText = event.target.innerText - 1
+        const row = Math.trunc(innerText/5)
+        const column = Math.trunc(innerText%5)
+        Cinema[row][column] = 1
+        let newCinema = [[],[],[],[],[]]
+            for(let i=0; i<5; i++){
+                for(let j=0; j<5; j++){
+                    newCinema[i][j]=Cinema[i][j]
+                }
+            }
+        setCinema(newCinema)
     }
+
+
+    let counter = 0
+    return(
+        <div className={classes.container}>
+            {Cinema.map(line=>{
+                const count = counter
+                counter+=5
+                return <Line seatCount={count} isFreeLine={line} handlePlaceClick={handlePlaceClick}/>
+            })}
+            
+        </div>
+    )
 }
 
 export default testPage
