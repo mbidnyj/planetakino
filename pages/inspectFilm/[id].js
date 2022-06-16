@@ -1,27 +1,29 @@
 import {useRouter} from 'next/router'
 import {useEffect, useState} from 'react'
 
-import Poster from '../../components/Poster'
+import AllAboutFilm from '../../components/allAboutFilm'
 
 
-function InspectFilm(props){
+function InspectFilm(){
     const [isLoading, setIsLoading] = useState(true)
     const [loadedFilm, setLoadedFilm] = useState({})
 
-    const route = useRouter()
-    const path = route.query.id
-    const url  = "http://localhost:3000/api/getExactFilm?id="+path
+    const router = useRouter()
 
     useEffect(()=>{
         setIsLoading(true)
         const fetchData = async ()=>{
+            const path = router.query.id
+            const url  = "http://localhost:3000/api/getExactFilm?id="+path
             const response = await fetch(url)
             const data = await response.json()
             setIsLoading(false)
             setLoadedFilm(data)
         }
-        fetchData()
-    }, [])
+        if(router.isReady){
+            fetchData()
+        }
+    }, [router.isReady])
 
 
     
@@ -31,12 +33,18 @@ function InspectFilm(props){
         )
     }else{
         return(
-            <Poster 
-            id={loadedFilm.id} 
-            image={loadedFilm.image} 
-            description={loadedFilm.description} 
-            date={loadedFilm.date} 
-            price={loadedFilm.price}
+            <AllAboutFilm
+                id={loadedFilm.id}
+                image={loadedFilm.image}
+                title={loadedFilm.title}
+                description={loadedFilm.description}
+                minPrice={loadedFilm.minPrice}
+                extended={loadedFilm.extended}
+                director={loadedFilm.director}
+                stars={loadedFilm.stars}
+                cinetech={loadedFilm.cinetech}
+                imax={loadedFilm.imax}
+                key={loadedFilm.id}
             />
         )
     }

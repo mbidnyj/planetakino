@@ -1,0 +1,62 @@
+.container{
+    width: 500px;
+    background-color: antiquewhite;
+    border: 5px solid grey;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.image{
+    width: 300px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.ticketContainer{
+    width: 400px;
+    background-color: brown;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 15px;
+}
+
+.miniPost{
+    width: 300px;
+    background-color: antiquewhite;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 5px solid grey;
+    padding: 7px;
+}
+
+.link{
+    background-color: grey;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 15px;
+    padding: 3px;
+}
+
+.infoContainer{
+    width: 400px;
+    background-color: brown;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 15px;
+}

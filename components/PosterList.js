@@ -1,6 +1,7 @@
 import Poster from "./Poster"
 
 function PosterList({filmPosters}){
+
     return(
         <div>
             {filmPosters.map(filmPoster=>{
@@ -12,6 +13,7 @@ function PosterList({filmPosters}){
                 date={filmPoster.date}
                 price={filmPoster.price}
                 id={filmPoster.id}
+
                 />
             })}
         </div>

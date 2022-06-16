@@ -1,6 +1,10 @@
+import Link from 'next/link'
+
 import classes from './Place.module.css'
 
+
 function Place({seat, isFreePlace, handlePlaceClick}){
+    const href='/ContactForm/'+seat
 
     if(isFreePlace===0){
         return(

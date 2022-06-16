@@ -10,21 +10,23 @@ function Cinetech(){
     const [loadedCinetech, setLoadedCinetech] = useState([])
 
     const router = useRouter()
-    const path = router.query.id
-    const url  = "http://localhost:3000/api/getCinetechCinema?id="+path
 
 
     useEffect(()=>{
         setIsLoading(true)
         const fetchData = async () =>{
+            const path = router.query.id
+            const url  = "http://localhost:3000/api/getCinetechCinema?id="+path
             const response = await fetch(url)
             const data = await response.json()
             setLoadedCinetech(data)
             setIsLoading(false)
             console.log(data)
         }
+    if(router.isReady){
         fetchData()
-    }, [])
+    }
+    }, [router.isReady])
 
 
     function handlePlaceClick(event){
@@ -38,6 +40,32 @@ function Cinetech(){
                 newCinema.push(newRow)
             }
         setLoadedCinetech(newCinema)
+        //changing Cinetech cinema for exact film via API
+        const dataObject = {
+            newCinema: newCinema,
+            filmId: router.query.id,
+            filmFormat: "cinetech"
+        }
+        fetch('/api/changeFilmData',{
+            method: "post",
+            body: JSON.stringify(dataObject)
+        })
+        //linking to contact form for exact film
+        const filmTitle = router.query.title
+        const filmPrice = router.query.price
+        const filmDate = router.query.date
+        const filmFormat = router.query.format
+        const filmPlace = innerText+1
+        router.push({
+            pathname:'/ContactForm',
+            query: {
+                title: filmTitle,
+                price: filmPrice,
+                date: filmDate,
+                format: filmFormat,
+                place: filmPlace
+            }
+        })
     }
 
 
