@@ -8,8 +8,8 @@ function FormatButton(props){
     const price = props.price
     const title = props.title
     const date = props.date
-    const id = props.id
-    const href = '/buyTicket/'+format+'/'+id
+    const _id = props._id
+    const href = '/buyTicket/'+format+'/'+_id
     
     return(
         <Link href={{

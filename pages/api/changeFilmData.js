@@ -6,7 +6,7 @@ async function handler(req, res){
     const newCinema = body.newCinema
     const filmId = body.filmId
     const filmFormat = body.filmFormat
-    console.log(body)
+    // console.log(body)
 
     if(filmFormat=="cinetech"){
         await changeFilmDataCinetech(filmId, newCinema)

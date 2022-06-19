@@ -15,8 +15,8 @@ function IMAX(){
     useEffect(()=>{
         setIsLoading(true)
         const fetchData = async () =>{
-            const path = router.query.id
-            const url  = "http://localhost:3000/api/getIMAXCinema?id="+path
+            const path = router.query._id
+            const url  = "http://localhost:3000/api/getIMAXCinema?_id="+path
             const response = await fetch(url)
             const data = await response.json()
             setLoadedIMAX(data)
@@ -42,7 +42,7 @@ function IMAX(){
         //changing IMAX cinema for exact film via API
         const dataObject = {
             newCinema: newCinema,
-            filmId: router.query.id,
+            filmId: router.query._id,
             filmFormat: "imax"
         }
         fetch('/api/changeFilmData',{

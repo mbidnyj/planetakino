@@ -59,7 +59,7 @@ function NewTicketForm(props) {
           <input type='text' required id='email' ref={EmailInputRef} />
         </div>
         <div className={classes.actions}>
-          <button>Submit</button>
+          <button>Buy Ticket</button>
         </div>
       </form>
     </div>

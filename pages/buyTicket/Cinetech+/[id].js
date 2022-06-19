@@ -16,7 +16,7 @@ function Cinetech(){
         setIsLoading(true)
         const fetchData = async () =>{
             const path = router.query.id
-            const url  = "http://localhost:3000/api/getCinetechCinema?id="+path
+            const url  = "http://localhost:3000/api/getCinetechCinema?_id="+path
             const response = await fetch(url)
             const data = await response.json()
             setLoadedCinetech(data)
@@ -43,7 +43,7 @@ function Cinetech(){
         //changing Cinetech cinema for exact film via API
         const dataObject = {
             newCinema: newCinema,
-            filmId: router.query.id,
+            filmId: router.query._id,
             filmFormat: "cinetech"
         }
         fetch('/api/changeFilmData',{

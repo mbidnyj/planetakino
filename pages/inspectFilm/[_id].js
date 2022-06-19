@@ -10,13 +10,15 @@ function InspectFilm(){
 
     const router = useRouter()
 
+
     useEffect(()=>{
         setIsLoading(true)
         const fetchData = async ()=>{
-            const path = router.query.id
-            const url  = "http://localhost:3000/api/getExactFilm?id="+path
+            const path = router.query._id
+            const url  = "http://localhost:3000/api/getExactFilm?_id="+path
             const response = await fetch(url)
             const data = await response.json()
+            console.log(data)
             setIsLoading(false)
             setLoadedFilm(data)
         }
@@ -26,17 +28,17 @@ function InspectFilm(){
     }, [router.isReady])
 
 
-    
+
     if(isLoading){
         return(
-            <h1>this page is loading</h1>
+            <h1>Loading...</h1>
         )
     }else{
         return(
             <AllAboutFilm
-                id={loadedFilm.id}
-                image={loadedFilm.image}
+                _id={loadedFilm._id}
                 title={loadedFilm.title}
+                image={loadedFilm.image}
                 description={loadedFilm.description}
                 minPrice={loadedFilm.minPrice}
                 extended={loadedFilm.extended}
@@ -44,7 +46,7 @@ function InspectFilm(){
                 stars={loadedFilm.stars}
                 cinetech={loadedFilm.cinetech}
                 imax={loadedFilm.imax}
-                key={loadedFilm.id}
+                key={loadedFilm._id}
             />
         )
     }

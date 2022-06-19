@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/another-films",
+      "handler": "another-films.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/another-films/count",
+      "handler": "another-films.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/another-films/:id",
+      "handler": "another-films.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/another-films",
+      "handler": "another-films.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/another-films/:id",
+      "handler": "another-films.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/another-films/:id",
+      "handler": "another-films.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

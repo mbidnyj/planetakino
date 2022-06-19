@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/film-collections",
+      "handler": "film-collection.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/film-collections/count",
+      "handler": "film-collection.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/film-collections/:id",
+      "handler": "film-collection.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/film-collections",
+      "handler": "film-collection.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/film-collections/:id",
+      "handler": "film-collection.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/film-collections/:id",
+      "handler": "film-collection.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

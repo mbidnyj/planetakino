@@ -1,19 +1,15 @@
 import Poster from "./Poster"
 
 function PosterList({filmPosters}){
-
+    // console.log(filmPosters)
     return(
         <div>
             {filmPosters.map(filmPoster=>{
                 return <Poster
-                key={filmPoster.title}
+                key={filmPoster._id}
                 image={filmPoster.image}
                 title={filmPoster.title}
-                description={filmPoster.description}
-                date={filmPoster.date}
-                price={filmPoster.price}
-                id={filmPoster.id}
-
+                _id={filmPoster._id}
                 />
             })}
         </div>

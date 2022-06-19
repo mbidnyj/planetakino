@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "films",
+  "info": {
+    "name": "film",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "minPrice": {
+      "type": "integer"
+    },
+    "image": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "extended": {
+      "type": "text"
+    },
+    "director": {
+      "type": "string"
+    },
+    "stars": {
+      "type": "string"
+    }
+  }
+}

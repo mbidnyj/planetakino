@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
+    "create-strapi-app": "^3.6.9",
     "dotenv": "^16.0.1",
+    "mongoose": "^6.3.8",
     "next": "12.1.6",
     "nodemailer": "^6.7.5",
     "react": "18.1.0",
