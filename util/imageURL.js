@@ -15,6 +15,7 @@ const FilmImages =  mongoose.models.upload_file || mongoose.model('upload_file',
 
 
 export async function getImageURLForExactFilm(_id){
+    
     const image = await FilmImages.findById(_id)
     // console.log("image", image)
     // console.log(image.url)

@@ -8,6 +8,7 @@ import classes from './Cinetech+.module.css'
 function Cinetech(){
     const [isLoading, setIsLoading] = useState(true)
     const [loadedCinetech, setLoadedCinetech] = useState([])
+    const [loadedShowId, setLoadedShowId] = useState("")
 
     const router = useRouter()
 
@@ -16,12 +17,13 @@ function Cinetech(){
         setIsLoading(true)
         const fetchData = async () =>{
             const path = router.query.id
-            const url  = "http://localhost:3000/api/getCinetechCinema?_id="+path
+            const url  = "http://localhost:3000/api/getShowToExactSession?_id="+path
             const response = await fetch(url)
             const data = await response.json()
-            setLoadedCinetech(data)
+            setLoadedCinetech(data.cinetech)
             setIsLoading(false)
-            console.log(data)
+            setLoadedShowId(data._id)
+            // console.log(data)
         }
     if(router.isReady){
         fetchData()
@@ -43,17 +45,17 @@ function Cinetech(){
         //changing Cinetech cinema for exact film via API
         const dataObject = {
             newCinema: newCinema,
-            filmId: router.query._id,
+            showId: loadedShowId,
             filmFormat: "cinetech"
         }
-        fetch('/api/changeFilmData',{
+        fetch('/api/changeShowData',{
             method: "post",
             body: JSON.stringify(dataObject)
         })
         //linking to contact form for exact film
         const filmTitle = router.query.title
-        const filmPrice = router.query.price
         const filmDate = router.query.date
+        const filmPrice = router.query.price
         const filmFormat = router.query.format
         const filmPlace = innerText+1
         router.push({

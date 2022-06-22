@@ -18,7 +18,7 @@ function InspectFilm(){
             const url  = "http://localhost:3000/api/getExactFilm?_id="+path
             const response = await fetch(url)
             const data = await response.json()
-            console.log(data)
+            // console.log(data)
             setIsLoading(false)
             setLoadedFilm(data)
         }
@@ -38,7 +38,7 @@ function InspectFilm(){
             <AllAboutFilm
                 _id={loadedFilm._id}
                 title={loadedFilm.title}
-                image={loadedFilm.image}
+                imageUrl={loadedFilm.imageUrl}
                 description={loadedFilm.description}
                 minPrice={loadedFilm.minPrice}
                 extended={loadedFilm.extended}

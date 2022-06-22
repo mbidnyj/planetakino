@@ -7,7 +7,7 @@ function PosterList({filmPosters}){
             {filmPosters.map(filmPoster=>{
                 return <Poster
                 key={filmPoster._id}
-                image={filmPoster.image}
+                imageUrl={filmPoster.imageUrl}
                 title={filmPoster.title}
                 _id={filmPoster._id}
                 />

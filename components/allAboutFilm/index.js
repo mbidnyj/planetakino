@@ -1,47 +1,39 @@
-import { useState, useEffect } from 'react'
+import {useEffect, useState} from "react"
 
 import classes from './allAboutFilm.module.css'
 import MiniPost from './miniPost'
 
 function AllAboutFilm(props){
     const [isLoading, setIsLoading] = useState(true)
-    const [loadedImage, setLoadedImage] = useState("")
-
-    console.log(props.image)
-    useEffect(()=>{
-        setIsLoading(true)
-        const fetchData = async ()=>{
-            const api = "http://localhost:3000/api/getImageToExactFilm?_id="+props.image
-            const url = await fetch(api)
-            const urlData = await url.json()
-            const imageURL = "http://localhost:1337"+urlData
-            // console.log(imageURL)
-            setLoadedImage(imageURL)
-            setIsLoading(false)
-        }
-        fetchData()
-    }, [])
+    const [loadedShows, setLoadedShows] = useState([])
 
     const _id=props._id
-    const image=props.image
     const title=props.title
+    const imageUrl=props.imageUrl
     const description=props.description
     const minPrice=props.minPrice
     const extended=props.extended
     const director=props.director
     const stars=props.stars
-    const cinetech=props.cinetech
-    const imax=props.imax
 
-    const today = new Date()
-    const next1Day = new Date()
-    next1Day.setDate(today.getDate() + 1)
-    const next2Day = new Date()
-    next2Day.setDate(today.getDate() + 2)
-    const next3Day = new Date()
-    next3Day.setDate(today.getDate() + 3)
-    const next4Day = new Date()
-    next4Day.setDate(today.getDate() + 4)
+    const fullImageUrl = "http://localhost:1337"+imageUrl
+    // const cinetech=props.cinetech
+    // const imax=props.imax
+    
+    useEffect(()=>{
+        setIsLoading(true)
+        const fetchData = async ()=>{
+            const url  = "http://localhost:3000/api/getShowsToExactFilm?_id="+_id
+            console.log(url)
+            const response = await fetch(url)
+            const data = await response.json()
+            console.log("data is ...................", data)
+            setIsLoading(false)
+            setLoadedShows(data)
+        }
+        fetchData()
+    }, [])
+
 
 
     if(isLoading){
@@ -52,7 +44,7 @@ function AllAboutFilm(props){
         return(
             <div className={classes.container}>
                 <h2>{title}</h2>
-                <img className={classes.image} src={loadedImage} alt={title}/>
+                <img className={classes.image} src={fullImageUrl} alt={title}/>
                 <div className={classes.infoContainer}>
                     <h3>Description</h3>
                     <p>{description}</p>
@@ -64,11 +56,17 @@ function AllAboutFilm(props){
                     <p>{stars}</p>
                 </div>
                 <div className={classes.ticketContainer}>
-                    <MiniPost date={today.toDateString()} _id={_id} minPrice={minPrice} title={title}/>
-                    <MiniPost date={next1Day.toDateString()} _id={_id} minPrice={minPrice} title={title}/>
-                    <MiniPost date={next2Day.toDateString()} _id={_id} minPrice={minPrice} title={title}/>
-                    <MiniPost date={next3Day.toDateString()} _id={_id} minPrice={minPrice} title={title}/>
-                    <MiniPost date={next4Day.toDateString()} _id={_id} minPrice={minPrice} title={title}/>
+                    {loadedShows.map(show=>{
+                        const formatedDate = show.date[0] + show.date[1] + show.date[2] + show.date[3] + "/" + show.date[5] + show.date[6] + "/" + show.date[8] + show.date[9] + "  |   " + show.date.slice(11, 19)
+                        return <MiniPost
+                                    date={formatedDate} 
+                                    _id={_id}
+                                    price={show.price} 
+                                    title={title} 
+                                    format={show.filmFormat}
+                                    key={show._id}
+                                />
+                    })}
                 </div>
             </div>
         )

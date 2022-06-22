@@ -1,26 +1,25 @@
+
 .poster{
-    margin: 15px;
-    padding: 15px;
-    border: 5px solid black;
-    width: 400px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
     background-color: rgb(230, 230, 230);
+    float: left;
+    position: relative;
+    width: 350px;
+    padding-bottom: 30px;
+    text-align: center;
+    border: 5px solid black;
     border-radius: 15px;
+    margin: 35px;
+    height: 570px;
+    
+
 }
 
 .image{
     width: 300px;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* .link{
-    text-decoration: none;
-    font-size: larger;
-    margin: 10px;
-    color: black;
-    border: 3px solid black;
-    border-radius: 10px;
-    padding: 3px;
-    background-color: #b10145;
-} */

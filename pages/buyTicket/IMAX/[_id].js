@@ -8,6 +8,7 @@ import classes from './IMAX.module.css'
 function IMAX(){
     const [isLoading, setIsLoading] = useState(true)
     const [loadedIMAX, setLoadedIMAX] = useState([])
+    const [loadedShowId, setLoadedShowId] = useState("")
 
     const router = useRouter()
 
@@ -16,12 +17,13 @@ function IMAX(){
         setIsLoading(true)
         const fetchData = async () =>{
             const path = router.query._id
-            const url  = "http://localhost:3000/api/getIMAXCinema?_id="+path
+            const url  = "http://localhost:3000/api/getShowToExactSession?_id="+path
             const response = await fetch(url)
             const data = await response.json()
-            setLoadedIMAX(data)
+            setLoadedIMAX(data.imax)
             setIsLoading(false)
-            console.log(data)
+            setLoadedShowId(data._id)
+            // console.log(data)
         }
         if(router.isReady){
             fetchData()
@@ -42,10 +44,10 @@ function IMAX(){
         //changing IMAX cinema for exact film via API
         const dataObject = {
             newCinema: newCinema,
-            filmId: router.query._id,
+            showId: loadedShowId,
             filmFormat: "imax"
         }
-        fetch('/api/changeFilmData',{
+        fetch('/api/changeShowData',{
             method: "post",
             body: JSON.stringify(dataObject)
         })

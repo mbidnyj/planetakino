@@ -4,11 +4,11 @@ import classes from './allAboutFilm.module.css'
 
 
 function FormatButton(props){
-    const format = props.format
-    const price = props.price
+    const _id = props._id
     const title = props.title
     const date = props.date
-    const _id = props._id
+    const format = props.format
+    const price = props.price
     const href = '/buyTicket/'+format+'/'+_id
     
     return(

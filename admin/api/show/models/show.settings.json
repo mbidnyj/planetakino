@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shows",
+  "info": {
+    "name": "show",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "datetime"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "filmFormat": {
+      "type": "enumeration",
+      "enum": [
+        "cinetech",
+        "imax"
+      ]
+    },
+    "film_collection": {
+      "model": "film-collection"
+    }
+  }
+}
